@@ -11,3 +11,21 @@ canvas {
     height: 600px;
     background-color: white;
 }
+
+.colors {
+    display: flex;
+    flex-direction: row;
+}
+
+.color {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+
+.btns {
+    margin-top: 10px;
+}
