@@ -27,6 +27,10 @@ canvas {
     border-radius: 10px;
 }
 
+.selected-color {
+    border: 1px solid chartreuse;
+}
+
 .btns {
     margin-top: 20px;
 }
