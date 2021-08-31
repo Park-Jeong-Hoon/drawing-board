@@ -3,6 +3,7 @@ const ctx = canvas.getContext("2d");
 const colors = document.getElementsByClassName("color");
 const modeBtn = document.querySelector(".btns .mode");
 const saveBtn = document.querySelector(".btns .save");
+const thick = document.querySelector("#thick")
 
 //canvas 가로 세로 길이
 canvas.width = 1200;
@@ -18,6 +19,8 @@ ctx.fillRect(0, 0, canvas.width, canvas.height); //투명 배경색을 막기 �
 
 ctx.strokeStyle = FST_COLOR; //그리기 색
 ctx.fillStyle = FST_COLOR;   //채우기 색
+
+ctx.lineWidth = 5.0; //선의 굵기
 
 COLOR_ARR.forEach(color => {
     if(color.style.backgroundColor === FST_COLOR) {
@@ -80,6 +83,10 @@ function onSaveClick() { //이미지 파일로 저장
     link.click();
 }
 
+function onThickClick(event) {
+    const size = event.target.value;  //range인풋의 값으로 선의 굵기 결정
+    ctx.lineWidth = size;
+}
 if(canvas) {
     canvas.addEventListener("mousemove", onMouseMove);
     canvas.addEventListener("mousedown", startDrawing);
@@ -93,3 +100,5 @@ COLOR_ARR.forEach(color => color.addEventListener("click", selectColor)); //클�
 modeBtn.addEventListener("click", onModeClick);
 
 saveBtn.addEventListener("click", onSaveClick);
+
+thick.addEventListener("input", onThickClick);
