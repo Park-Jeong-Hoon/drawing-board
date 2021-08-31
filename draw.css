@@ -1,5 +1,5 @@
 body {
-    background-color: cornflowerblue;
+    background-color: #95afc0;
     display: flex;
     margin: 0;
     flex-direction: column;
@@ -28,7 +28,7 @@ canvas {
 }
 
 .selected-color {
-    border: 1px solid chartreuse;
+    border: 3px solid chartreuse;
 }
 
 .btns {
