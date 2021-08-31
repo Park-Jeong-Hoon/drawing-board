@@ -1,5 +1,6 @@
 const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
+const colors = document.getElementsByClassName("color");
 
 //canvas 가로 세로 길이
 canvas.width = 1200;
@@ -31,9 +32,16 @@ function onMouseMove(event) { //마우스 움직일 때
     }
 }
 
+function selectColor(event) { //색을 고르는 이벤트 핸들러 함수
+    console.log(event);
+    ctx.strokeStyle = event.target.style.backgroundColor;
+}
+
 if(canvas) {
     canvas.addEventListener("mousemove", onMouseMove);
     canvas.addEventListener("mousedown", startDrawing);
     canvas.addEventListener("mouseup", stopDrawing);
     canvas.addEventListener("mouseleave", stopDrawing);
 }
+
+Array.from(colors).forEach(color => color.addEventListener("click", selectColor)); //클래스명이 color인 모든 요소들을 배열로 가져와 각 요소에 이벤트리스너 적용
