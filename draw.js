@@ -2,16 +2,19 @@ const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
 const colors = document.getElementsByClassName("color");
 const modeBtn = document.querySelector(".btns .mode");
+const saveBtn = document.querySelector(".btns .save");
 
 //canvas 가로 세로 길이
 canvas.width = 1200;
 canvas.height = 600;
 
-const FST_COLOR = "black";
+const FST_COLOR = "black"; //초기 색상
 
-//칠하는 색
-ctx.strokeStyle = FST_COLOR;
-ctx.fillStyle = FST_COLOR;
+ctx.fillStyle = "white";
+ctx.fillRect(0, 0, canvas.width, canvas.height); //투명 배경색을 막기 위해서
+
+ctx.strokeStyle = FST_COLOR; //그리기 색
+ctx.fillStyle = FST_COLOR;   //채우기 색
 
 let isdraw = false; //마우스가 눌리고 있는 상태인지의 여부
 let isfill = false; //채우기 모드인지를 체크
@@ -58,6 +61,14 @@ function startFilling() {
     }
 }
 
+function onSaveClick() { //이미지 파일로 저장
+    const img = canvas.toDataURL("image/png");
+    const link = document.createElement("a");
+    link.href = img;
+    link.download = "Mypainting"; //파일명
+    link.click();
+}
+
 if(canvas) {
     canvas.addEventListener("mousemove", onMouseMove);
     canvas.addEventListener("mousedown", startDrawing);
@@ -69,3 +80,5 @@ if(canvas) {
 Array.from(colors).forEach(color => color.addEventListener("click", selectColor)); //클래스명이 color인 모든 요소들을 배열로 가져와 각 요소에 이벤트리스너 적용
 
 modeBtn.addEventListener("click", onModeClick);
+
+saveBtn.addEventListener("click", onSaveClick);
